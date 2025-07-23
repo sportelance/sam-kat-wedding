@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding RSVP - RSVP</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/rsvp.css">
+</head>
+<body>
+    <div id="rsvpPage" class="rsvp-page">
+        <div class="rsvp-overlay">
+            <button class="back-arrow" id="backArrow">&larr;</button>
+            <div class="rsvp-container">
+                <h1 class="rsvp-header">You come?</h1>
+                <div class="rsvp-form">
+                    <div id="guestInfo" class="guest-info">RSVP for:</div>
+                    <div id="guestCheckboxes" class="guest-checkboxes"></div>
+                    <div id="stopMessage" class="stop-message">please stop</div>
+                    <select id="responseDropdown" class="dropdown">
+                        <option value="">Select your response...</option>
+                        <option value="We'll see you for the ceremony">We'll see you for the ceremony</option>
+                        <option value="We'll find somewhere to stay in the Somerville area and would like to hang out sunday">we'll find somewhere to stay in the Somerville area and would like to hang out sunday</option>
+                        <option value="We can only be there saturday">We can only be there saturday</option>
+                        <option value="We can only be there sunday">We can only be there sunday</option>
+                        <option value="We won't be able to make it">We won't be able to make it</option>
+                        <option value="Maybe, we'll let you know closer to the date">Maybe, we'll let you know closer to the date</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div id="otherTextContainer" class="other-text-container" style="display: none;">
+                        <textarea id="otherText" class="other-text" placeholder="Explain yourself..."></textarea>
+                    </div>
+                    <button id="submitButton" class="submit-button" disabled>let us know</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="shared.js"></script>
+    <script src="rsvp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</body>
+</html> 

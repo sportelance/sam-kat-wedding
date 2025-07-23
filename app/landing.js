@@ -11,7 +11,7 @@ document.getElementById('nameInput').addEventListener('input', function() {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-    if (sessionStorage.getItem('currentGuest')) {
+    if (localStorage.getItem('currentGuest')) {
         goToMain();
     }
 }); 
@@ -25,7 +25,7 @@ function checkGuest() {
             inputName: nameInput.value.trim(),
             party: guestList[name]
         };
-        sessionStorage.setItem('currentGuest', JSON.stringify(currentGuest));
+        localStorage.setItem('currentGuest', JSON.stringify(currentGuest));
         goToMain();
     } else {
         nameInput.classList.add('shake');

@@ -2,7 +2,7 @@ let currentGuest = null;
 let emailCount = 0;
 
 window.addEventListener('DOMContentLoaded', () => {
-    const savedGuest = sessionStorage.getItem('currentGuest');
+    const savedGuest = localStorage.getItem('currentGuest');
     if (savedGuest) {
         currentGuest = JSON.parse(savedGuest);
         showRsvpPage();

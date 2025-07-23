@@ -1,7 +1,7 @@
 let currentGuest = null;
 
 window.addEventListener('DOMContentLoaded', () => {
-    const savedGuest = sessionStorage.getItem('currentGuest');
+    const savedGuest = localStorage.getItem('currentGuest');
     if (savedGuest) {
         currentGuest = JSON.parse(savedGuest);
         showMainPage();
@@ -11,6 +11,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('rsvpButton').addEventListener('click', () => {
         window.location.href = 'rsvp.html';
+    });
+
+    // Gallery menu logic
+    const engagementBtn = document.getElementById('engagementBtn');
+    const photosBtn = document.getElementById('photosBtn');
+    const engagementGallery = document.getElementById('engagementGallery');
+    const photosGallery = document.getElementById('photosGallery');
+
+    engagementBtn.addEventListener('click', () => {
+        toggleGallery(engagementGallery, photosGallery);
+    });
+    photosBtn.addEventListener('click', () => {
+        toggleGallery(photosGallery, engagementGallery);
     });
 });
 
@@ -31,4 +44,19 @@ function setupScrollEffect() {
             bgImage2.style.opacity = 0;
         }
     });
+}
+
+function toggleGallery(showGallery, hideGallery) {
+    if (showGallery.style.display === 'block') {
+        showGallery.style.display = 'none';
+        return;
+    }
+    showGallery.style.display = 'block';
+    hideGallery.style.display = 'none';
+    // Fade in images
+    setTimeout(() => {
+        showGallery.querySelectorAll('.gallery-img').forEach(img => {
+            img.classList.add('fade-in');
+        });
+    }, 10);
 } 

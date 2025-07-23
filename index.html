@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding RSVP</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preload" as="image" href="images/sam_in_tree.jpg">
-    <link rel="preload" as="image" href="images/maddy_wedding.jpg">
-    <link rel="preload" as="image" href="images/catson_judge.jpg">
+
 </head>
 <body>
     <!-- Landing Page -->
@@ -29,11 +27,11 @@
         
         <div class="content-overlay">
             <h1 id="mainHeader" class="main-header">Hello</h1>
-            <h2 class="sub-header">we're getting married</h2>
-            <h3 class="sub-header">and we'd like to know whether you'll be able to come</h3>
+            <h2 class="sub-header">We're getting married</h2>
+            <h3 class="sub-header">And we'd like to know whether you'll be able to come</h3>
             
             <div class="ceremony-info">
-                <h2 class="ceremony-header">Ceremony location and date</h2>
+                <h2 class="ceremony-header">Ceremony location and date: </h2>
                 <div class="ceremony-details">
                     <a href="https://maps.google.com/?q=Arnold+Arboretum+Boston" target="_blank" class="arboretum-link">The Arnold Arboretum</a> (exact location within the park coming)<br>
                     9/20/25 @6pm (we plan to get there at 5)
@@ -41,7 +39,7 @@
             </div>
 
             <div class="ceremony-info">
-                <h2 class="ceremony-header">Reception</h2>
+                <h2 class="ceremony-header">Reception: </h2>
                 <div class="ceremony-details">
                     Exact details tbd but we'll get dinner at a restaurant and then drinks somewhere in somerville/ maybe at our apartment.<br><br>
                     The next day we're going to take the train out to <a href="https://maps.google.com/?q=Halibut+Point+State+Park+Rockport+MA" target="_blank" class="arboretum-link">Halibut State Park</a> in Rockport in the morning and would love if people came along
@@ -49,7 +47,7 @@
             </div>
 
             <div class="ceremony-info">
-                <h2 class="ceremony-header">Rain Date</h2>
+                <h2 class="ceremony-header">Rain Date: </h2>
                 <div class="ceremony-details">
                     If it's miserable out, but looks fine the next day, we'll have the ceremony at the same location on Sunday the 21st at noon. If both days are miserable we'll figure something out.
                 </div>
@@ -76,17 +74,17 @@
                     
                     <select id="responseDropdown" class="dropdown">
                         <option value="">Select your response...</option>
-                        <option value="we'll see you for the ceremony">we'll see you for the ceremony</option>
-                        <option value="we'll find somewhere to stay in the Somerville area and would like to hang out sunday">we'll find somewhere to stay in the Somerville area and would like to hang out sunday</option>
-                        <option value="we can only be there saturday">we can only be there saturday</option>
-                        <option value="we can only be there sunday">we can only be there sunday</option>
+                        <option value="We'll see you for the ceremony">We'll see you for the ceremony</option>
+                        <option value="We'll find somewhere to stay in the Somerville area and would like to hang out sunday">we'll find somewhere to stay in the Somerville area and would like to hang out sunday</option>
+                        <option value="We can only be there saturday">We can only be there saturday</option>
+                        <option value="We can only be there sunday">We can only be there sunday</option>
                         <option value="We won't be able to make it">We won't be able to make it</option>
                         <option value="Maybe, we'll let you know closer to the date">Maybe, we'll let you know closer to the date</option>
-                        <option value="other">other</option>
+                        <option value="Other">Other</option>
                     </select>
                     
                     <div id="otherTextContainer" class="other-text-container" style="display: none;">
-                        <textarea id="otherText" class="other-text" placeholder="Please explain..."></textarea>
+                        <textarea id="otherText" class="other-text" placeholder="Explain yourself..."></textarea>
                     </div>
                     
                     <button id="submitButton" class="submit-button" onclick="submitRsvp()" disabled>let us know</button>

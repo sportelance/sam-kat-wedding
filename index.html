@@ -36,13 +36,28 @@
                     9/20/25 @6pm (we plan to get there at 5)
                 </div>
             </div>
+
+            <div class="ceremony-info">
+                <h2 class="ceremony-header">Reception</h2>
+                <div class="ceremony-details">
+                    Exact details tbd but we'll get dinner at a restaurant and then drinks somewhere in somerville/ maybe at our apartment.<br><br>
+                    The next day we're going to take the train out to <a href="https://maps.google.com/?q=Halibut+Point+State+Park+Rockport+MA" target="_blank" class="arboretum-link">Halibut State Park</a> in Rockport in the morning and would love if people came along
+                </div>
+            </div>
+
+            <div class="ceremony-info">
+                <h2 class="ceremony-header">Rain Date</h2>
+                <div class="ceremony-details">
+                    If it's miserable out, but looks fine the next day, we'll have the ceremony at the same location on Sunday the 21st at noon. If both days are miserable we'll figure something out.
+                </div>
+            </div>
             
             <button class="rsvp-button" onclick="goToRsvp()">RSVP</button>
         </div>
     </div>
 
     <!-- RSVP Page -->
-    <div id="rsvpPage" class="rsvp-page">
+        <div id="rsvpPage" class="rsvp-page">
         <div class="rsvp-overlay">
             <button class="back-arrow" onclick="goToMain()">←</button>
             
@@ -50,17 +65,26 @@
                 <h1 class="rsvp-header">You come?</h1>
                 
                 <div class="rsvp-form">
-                    <div id="guestInfo" class="guest-info"></div>
+                    <div id="guestInfo" class="guest-info">RSVP for:</div>
+                    
+                    <div id="guestCheckboxes" class="guest-checkboxes"></div>
                     
                     <div id="stopMessage" class="stop-message">please stop</div>
                     
                     <select id="responseDropdown" class="dropdown">
                         <option value="">Select your response...</option>
-                        <option value="Yes, we'll all be there!">Yes, we'll all be there!</option>
-                        <option value="Yes, but some of us can't make it">Yes, but some of us can't make it</option>
-                        <option value="Sorry, we can't make it">Sorry, we can't make it</option>
-                        <option value="Maybe - we'll let you know closer to the date">Maybe - we'll let you know closer to the date</option>
+                        <option value="we'll see you for the ceremony">we'll see you for the ceremony</option>
+                        <option value="we'll find somewhere to stay in the Somerville area and would like to hang out sunday">we'll find somewhere to stay in the Somerville area and would like to hang out sunday</option>
+                        <option value="we can only be there saturday">we can only be there saturday</option>
+                        <option value="we can only be there sunday">we can only be there sunday</option>
+                        <option value="We won't be able to make it">We won't be able to make it</option>
+                        <option value="Maybe, we'll let you know closer to the date">Maybe, we'll let you know closer to the date</option>
+                        <option value="other">other</option>
                     </select>
+                    
+                    <div id="otherTextContainer" class="other-text-container" style="display: none;">
+                        <textarea id="otherText" class="other-text" placeholder="Please explain..."></textarea>
+                    </div>
                     
                     <button id="submitButton" class="submit-button" onclick="submitRsvp()" disabled>let us know</button>
                 </div>

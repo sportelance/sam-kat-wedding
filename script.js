@@ -1,21 +1,68 @@
 // Guest list with name variations
 const guestList = {
-    'joe': ['Joe', 'Sarah'],
-    'joey': ['Joe', 'Sarah'],
-    'joseph': ['Joe', 'Sarah'],
-    'sarah': ['Joe', 'Sarah'],
-    'mike': ['Mike', 'Lisa', 'Tommy'],
-    'michael': ['Mike', 'Lisa', 'Tommy'],
-    'lisa': ['Mike', 'Lisa', 'Tommy'],
-    'emma': ['Emma'],
-    'em': ['Emma'],
-    'david': ['David', 'Rachel'],
-    'dave': ['David', 'Rachel'],
-    'rachel': ['David', 'Rachel'],
-    'sam': ['Sam', 'Alex'],
-    'samuel': ['Sam', 'Alex'],
-    'alex': ['Sam', 'Alex'],
-    'alexandra': ['Sam', 'Alex']
+    'joe': ['Joe', 'Patty', 'Grace'],
+    'joey': ['Joe', 'Patty', 'Grace'],
+    'joseph': ['Joe', 'Patty', 'Grace'],
+    'patty': ['Joe', 'Patty', 'Grace'],
+    'grace': ['Joe', 'Patty', 'Grace'],
+
+    'matt': ['Matt', 'Isabella'],
+    'matthew': ['Matt', 'Isabella'],
+    'isabella': ['Matt', 'Isabella'],
+    'bella': ['Matt', 'Isabella'],
+
+    'tom': ['Tom', 'Natalie'],
+    'thomas': ['Tom', 'Natalie'],
+    'natalie': ['Tom', 'Natalie'],
+
+    'justin': ['Justin', 'Samantha'],
+    'sam': ['Justin', 'Samantha'],
+    'samantha': ['Justin', 'Samantha'],
+
+    'eileen': ['Eileen', 'Rich', 'Paul'],
+    'rich': ['Eileen', 'Rich', 'Paul'],
+    'richard': ['Eileen', 'Rich', 'Paul'],
+    'paul': ['Eileen', 'Rich', 'Paul'],
+
+    'abi': ['Abi'],
+    'abigail': ['Abi'],
+
+    'desiree': ['Desiree'],
+    'desi': ['Desiree'],
+
+    'greg': ['Greg', 'Keith'],
+    'gregory': ['Greg', 'Keith'],
+    'keith': ['Greg', 'Keith'],
+
+    'brian': ['Brian'],
+
+    'preston': ['Preston'],
+
+    'maddy': ['Maddy', 'Chris', 'John'],
+    'madeline': ['Maddy', 'Chris', 'John'],
+    'chris': ['Maddy', 'Chris', 'John'],
+    'john': ['Maddy', 'Chris', 'John'],
+    'johnny': ['Maddy', 'Chris', 'John'],
+
+    'tushar': ['Tushar', 'Christopher'],
+    'tush': ['Tushar', 'Christopher'],
+    'christopher': ['Tushar', 'Christopher'],
+
+    'cole': ['Cole', 'Cayla'],
+    'cayla': ['Cole', 'Cayla'],
+
+    'josephine': ['Josephine', 'Austin'],
+    'feen': ['Josephine', 'Austin'],
+    'austin': ['Josephine', 'Austin'],
+
+    'ally': ['Ally'],
+
+    'dick': ['Dick', 'Pam'],
+    'pamela': ['Dick', 'Pam'],
+    'pam': ['Dick', 'Pam'],
+
+    'sam': ['Sam', 'Kat'],
+    'kat': ['Sam', 'Kat']
 };
 
 let currentGuest = null;
@@ -168,4 +215,35 @@ window.addEventListener('load', () => {
         currentGuest = JSON.parse(savedGuest);
         showMainPage();
     }
+});
+
+document.getElementById('rsvpOption').addEventListener('change', function() {
+  const otherContainer = document.getElementById('otherTextContainer');
+  otherContainer.style.display = this.value === 'other' ? 'block' : 'none';
+});
+
+document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Get selected guests
+  const guests = Array.from(document.querySelectorAll('input[name="guests"]:checked'))
+    .map(cb => cb.value);
+
+  // Get RSVP option
+  const rsvpOption = document.getElementById('rsvpOption').value;
+
+  // Get other text if needed
+  let rsvpResponse = rsvpOption;
+  if (rsvpOption === 'other') {
+    const otherText = document.getElementById('otherText').value.trim();
+    rsvpResponse = `other: ${otherText}`;
+  }
+
+  // Send RSVP data (replace with your actual submission logic)
+  console.log({
+    guests,
+    rsvp: rsvpResponse
+  });
+
+  // ...show confirmation, etc...
 });

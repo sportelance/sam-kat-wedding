@@ -97,11 +97,10 @@ body {
 }
 
 .bg-image-1 {
-    background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80');
-}
+    background-image: url('images/sam_in_tree.jpg');}
 
 .bg-image-2 {
-    background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80');
+    background-image: url('images/maddy_wedding.jpg');
     opacity: 0;
 }
 
@@ -171,7 +170,7 @@ body {
 .rsvp-page {
     display: none;
     min-height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2343&q=80');
+    background-image: url('images/samuel_L_catson_judge.jpg');
     background-size: cover;
     background-position: center;
     position: relative;

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding RSVP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <div class="landing-container">
+            <h1 class="landing-title">Who are you?</h1>
+            <p class="landing-subtitle">(just your first name please)</p>
+            <input type="text" id="nameInput" class="name-input" placeholder="Enter your name...">
+            <div id="errorMessage" class="error-message">
+                Either we don't have you on the list or Sam doesn't have your name spelled that way. If you suspect it's the latter, text him to let him know and/or try again with a different spelling.
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Page -->
+    <div id="mainPage" class="main-page">
+        <div class="background-image bg-image-1"></div>
+        <div class="background-image bg-image-2"></div>
+        
+        <div class="content-overlay">
+            <h1 id="mainHeader" class="main-header">Hello</h1>
+            <h2 class="sub-header">we're getting married</h2>
+            <h3 class="sub-header">and we'd like to know whether you'll be able to come</h3>
+            
+            <div class="ceremony-info">
+                <h2 class="ceremony-header">Ceremony location and date</h2>
+                <div class="ceremony-details">
+                    <a href="https://maps.google.com/?q=Arnold+Arboretum+Boston" target="_blank" class="arboretum-link">The Arnold Arboretum</a> (exact location within the park coming)<br>
+                    9/20/25 @6pm (we plan to get there at 5)
+                </div>
+            </div>
+            
+            <button class="rsvp-button" onclick="goToRsvp()">RSVP</button>
+        </div>
+    </div>
+
+    <!-- RSVP Page -->
+    <div id="rsvpPage" class="rsvp-page">
+        <div class="rsvp-overlay">
+            <button class="back-arrow" onclick="goToMain()">←</button>
+            
+            <div class="rsvp-container">
+                <h1 class="rsvp-header">You come?</h1>
+                
+                <div class="rsvp-form">
+                    <div id="guestInfo" class="guest-info"></div>
+                    
+                    <div id="stopMessage" class="stop-message">please stop</div>
+                    
+                    <select id="responseDropdown" class="dropdown">
+                        <option value="">Select your response...</option>
+                        <option value="Yes, we'll all be there!">Yes, we'll all be there!</option>
+                        <option value="Yes, but some of us can't make it">Yes, but some of us can't make it</option>
+                        <option value="Sorry, we can't make it">Sorry, we can't make it</option>
+                        <option value="Maybe - we'll let you know closer to the date">Maybe - we'll let you know closer to the date</option>
+                    </select>
+                    
+                    <button id="submitButton" class="submit-button" onclick="submitRsvp()" disabled>let us know</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

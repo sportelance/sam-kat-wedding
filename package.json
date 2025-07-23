@@ -1,0 +1,32 @@
+{
+  "name": "wedding-rsvp-site",
+  "version": "1.0.0",
+  "description": "A beautiful wedding RSVP website with guest authentication and response tracking",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx live-server --port=3000 --open=/ --watch=.",
+    "dev": "npx live-server --port=3000 --open=/ --watch=. --no-css-inject",
+    "serve": "npx http-server . -p 3000 -o -c-1",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Push to GitHub repository to deploy via GitHub Pages'"
+  },
+  "keywords": [
+    "wedding",
+    "rsvp",
+    "static-site",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Sam Portelance",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sportelance/sam-kat-wedding.git"
+  },
+  "homepage": "https://sportelance.github.io/sam-kat-wedding"
+}

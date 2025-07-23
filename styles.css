@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Landing Page Styles */
+.landing-page {
+    background: linear-gradient(135deg, #e6e6fa, #d8bfd8);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.landing-container {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.landing-title {
+    font-size: 2rem;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+}
+
+.landing-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.name-input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    background: white;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: #9370db;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.error-message.show {
+    opacity: 1;
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Main Page Styles */
+.main-page {
+    display: none;
+    position: relative;
+    height: 200vh;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.5s ease;
+}
+
+.bg-image-1 {
+    background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80');
+}
+
+.bg-image-2 {
+    background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80');
+    opacity: 0;
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.main-header {
+    font-size: 2.5rem;
+    margin: 80px 0 20px;
+}
+
+.sub-header {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.ceremony-info {
+    margin: 60px 0;
+    padding: 30px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.ceremony-header {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.ceremony-details {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.arboretum-link {
+    color: #87ceeb;
+    text-decoration: none;
+}
+
+.arboretum-link:hover {
+    text-decoration: underline;
+}
+
+.rsvp-button {
+    background: #ff69b4;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: background 0.3s ease;
+}
+
+.rsvp-button:hover {
+    background: #ff1493;
+}
+
+/* RSVP Page Styles */
+.rsvp-page {
+    display: none;
+    min-height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2343&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.rsvp-overlay {
+    background: rgba(0,0,0,0.4);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.back-arrow {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 100;
+}
+
+.rsvp-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 100px);
+}
+
+.rsvp-form {
+    margin-top: auto;
+    margin-bottom: 40px;
+}
+
+.rsvp-header {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    margin-bottom: 40px;
+}
+
+.rsvp-form {
+    background: rgba(255,255,255,0.9);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.guest-info {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.dropdown {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background: white;
+}
+
+.submit-button {
+    background: #28a745;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.submit-button:hover:not(:disabled) {
+    background: #218838;
+}
+
+.submit-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.stop-message {
+    color: #dc3545;
+    font-weight: bold;
+    margin-bottom: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stop-message.show {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        font-size: 2rem;
+    }
+    
+    .sub-header, .ceremony-header {
+        font-size: 1.2rem;
+    }
+    
+    .rsvp-header {
+        font-size: 2.5rem;
+    }
+}

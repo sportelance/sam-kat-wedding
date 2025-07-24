@@ -1,5 +1,36 @@
 let currentGuest = null;
 let emailCount = 0;
+let rsvpDropdownPopulated = false;
+
+// RSVP dropdown options (excluding placeholder)
+const rsvpOptionTemplates = [
+    "We'll see you for the ceremony",
+    "We'll hang out Saturday and Sunday",
+    "We can only be there Saturday",
+    "We can only be there Sunday",
+    "We won't be able to make it",
+    "We'll let you know closer to the date",
+    "Other"
+];
+
+// Modal HTML for stay suggestion
+function createStayModal() {
+    // Remove any existing modal
+    const existing = document.getElementById('stayModal');
+    if (existing) existing.remove();
+    const modal = document.createElement('div');
+    modal.id = 'stayModal';
+    modal.className = 'stay-modal';
+    modal.innerHTML = `
+        <div class="stay-modal-content">
+            <span class="stay-modal-close" id="stayModalClose">&times;</span>
+            <div style="margin-bottom: 8px;">looks like you'll need somewhere to stay!<br>
+            This <a href="https://maps.app.goo.gl/9XJtcKF69zRet49r8" target="_blank">place</a> and this <a href="https://maps.app.goo.gl/jZvbRXjSWgT48SVV9" target="_blank">place</a> are pretty close to our apartment (we live @48 Mansfield St, Somerville)</div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    document.getElementById('stayModalClose').onclick = () => modal.remove();
+}
 
 window.addEventListener('DOMContentLoaded', () => {
     const savedGuest = localStorage.getItem('currentGuest');
@@ -14,6 +45,22 @@ window.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'main.html';
     });
 
+    // Populate RSVP dropdown on click (only once)
+    const dropdown = document.getElementById('responseDropdown');
+    if (dropdown) {
+        dropdown.addEventListener('focus', () => populateRsvpDropdown());
+        dropdown.addEventListener('mousedown', () => populateRsvpDropdown());
+        dropdown.addEventListener('change', function() {
+            // Show modal if "We'll hang out Saturday and Sunday" is selected
+            if (this.value === "We'll hang out Saturday and Sunday") {
+                createStayModal();
+            } else {
+                const modal = document.getElementById('stayModal');
+                if (modal) modal.remove();
+            }
+        });
+    }
+
     document.getElementById('responseDropdown').addEventListener('change', function() {
         const submitButton = document.getElementById('submitButton');
         submitButton.disabled = this.value === '';
@@ -25,7 +72,35 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function showRsvpPage() {
-    document.getElementById('guestInfo').textContent = `RSVP for: ${currentGuest.party.join(', ')}`;
+    document.getElementById('guestInfo').textContent = 'RSVP for:';
+    const checkboxesDiv = document.getElementById('guestCheckboxes');
+    checkboxesDiv.innerHTML = '';
+    currentGuest.party.forEach((guest, i) => {
+        const label = document.createElement('label');
+        label.className = 'guest-pill';
+        label.style.position = 'relative';
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.name = 'guests';
+        checkbox.value = guest;
+        checkbox.checked = true;
+        checkbox.className = 'pill-checkbox';
+        // Update pill style on change
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                label.classList.add('checked');
+            } else {
+                label.classList.remove('checked');
+            }
+        });
+        // Initial state
+        if (checkbox.checked) label.classList.add('checked');
+        label.appendChild(checkbox);
+        const span = document.createElement('span');
+        span.textContent = guest;
+        label.appendChild(span);
+        checkboxesDiv.appendChild(label);
+    });
 }
 
 function submitRSVP() {
@@ -93,4 +168,55 @@ function submitRSVP() {
         submitButton.disabled = true;
         submitButton.textContent = "You're cut off!";
     }
-} 
+}
+
+function getSelectedGuests() {
+    return Array.from(document.querySelectorAll('.guest-checkboxes input[type="checkbox"]:checked')).map(cb => cb.value);
+}
+
+function populateRsvpDropdown() {
+    const dropdown = document.getElementById('responseDropdown');
+    if (!dropdown) return;
+
+    const selectedGuests = getSelectedGuests();
+    // Remove all but the first (placeholder) option
+    while (dropdown.options.length > 1) dropdown.remove(1);
+
+    // If no guests selected, show only 'Other' and update placeholder
+    if (selectedGuests.length === 0) {
+        dropdown.options[0].textContent = "please select who you're rsvping for";
+        const opt = document.createElement('option');
+        opt.value = "Other";
+        opt.textContent = "Other";
+        dropdown.appendChild(opt);
+        dropdown.value = "";
+        return;
+    } else {
+        dropdown.options[0].textContent = "Select your response...";
+    }
+
+    // Determine prefix: 'I' or 'We'
+    const isSingle = selectedGuests.length === 1;
+    for (let i = 0; i < rsvpOptionTemplates.length; i++) {
+        let optionText = rsvpOptionTemplates[i];
+        // Replace 'We'/'we'/'We'll' with 'I'/'I'll' if only one guest
+        if (isSingle) {
+            optionText = optionText.replace(/^We\b/, 'I')
+                                   .replace(/^we\b/, 'I')
+                                   .replace(/^We'?ll\b/, "I'll")
+                                   .replace(/^we'?ll\b/, "I'll");
+        }
+        const opt = document.createElement('option');
+        opt.value = optionText;
+        opt.textContent = optionText;
+        dropdown.appendChild(opt);
+    }
+    dropdown.value = "";
+}
+
+// Re-populate dropdown if guest selection changes
+document.addEventListener('change', function(e) {
+    if (e.target && e.target.matches('.guest-checkboxes input[type="checkbox"]')) {
+        populateRsvpDropdown();
+    }
+}); 

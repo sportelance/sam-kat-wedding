@@ -103,4 +103,100 @@
 
 .stop-message.show {
     opacity: 1;
+}
+
+.guest-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 18px;
+    width: 100%;
+}
+.guest-info {
+    min-width: 70px;
+    text-align: right;
+}
+
+.guest-checkboxes {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.guest-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 22px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(147,112,219,0.13) 0%, rgba(147,112,219,0.07) 100%);
+    color: #cdbaf5a0;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1.5px solid rgba(147,112,219,0.18);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.18s, color 0.18s, border-color 0.18s, box-shadow 0.18s;
+    box-shadow: 0 1.5px 6px rgba(147,112,219,0.06);
+    margin-bottom: 2px;
+    outline: none;
+}
+.guest-pill span {
+    pointer-events: none;
+}
+.guest-pill.checked {
+    background: #9370db;
+    color: #fff;
+    border-color: #9370db;
+    box-shadow: 0 2px 8px rgba(147,112,219,0.13);
+}
+.guest-pill:focus {
+    box-shadow: 0 0 0 2px #bba6e6;
+}
+.pill-checkbox {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+.stay-modal {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: rgba(255,255,255,0.97);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+    z-index: 9999;
+    min-width: 270px;
+    max-width: 340px;
+    padding: 0;
+    font-size: 1rem;
+    animation: fadeInModal 0.3s;
+}
+.stay-modal-content {
+    padding: 18px 22px 14px 18px;
+    position: relative;
+}
+.stay-modal-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.3rem;
+    color: #9370db;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.18s;
+}
+.stay-modal-close:hover {
+    color: #b8005c;
+}
+@keyframes fadeInModal {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: none; }
 } 

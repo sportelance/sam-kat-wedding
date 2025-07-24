@@ -1,6 +1,6 @@
 .rsvp-page {
     min-height: 100vh;
-    background-image: url('../images/catson_judge.jpg');
+    background-image: url('../images/catson_judge_web.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -199,4 +199,27 @@
 @keyframes fadeInModal {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: none; }
+}
+#otherTextContainer {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 12px auto;
+    border-radius: 12px;
+    background: rgba(147,112,219,0.07);
+    box-shadow: 0 1.5px 6px rgba(147,112,219,0.04);
+    padding: 10px 0 6px 0;
+    transition: background 0.18s;
+}
+#otherText {
+    width: 92%;
+    min-height: 60px;
+    border-radius: 8px;
+    border: 1.5px solid #d1c4e9;
+    padding: 8px 12px;
+    font-size: 1rem;
+    background: #fff;
+    resize: vertical;
+    margin: 0 auto;
+    display: block;
+    box-sizing: border-box;
 } 

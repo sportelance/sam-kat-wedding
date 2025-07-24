@@ -34,7 +34,7 @@
 
 .main-header {
     font-size: 2.5rem;
-    margin: 80px 0 20px;
+    margin: 140px 0 20px;
 }
 
 .sub-header {
@@ -167,4 +167,40 @@
 }
 .gallery-img.fade-in {
     opacity: 1;
+} 
+
+.main-scrollable {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+    .content-overlay {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        height: 100vh;
+        justify-content: flex-start;
+    }
+    .main-scrollable {
+        flex: 1 1 auto;
+        overflow-y: auto;
+        padding-bottom: 80px;
+        min-height: 100vh;
+        max-height: calc(100vh - 80px);
+    }
+    .rsvp-bottom-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px 0 12px 0;
+    }
+    .rsvp-button {
+        margin: 0;
+    }
 } 

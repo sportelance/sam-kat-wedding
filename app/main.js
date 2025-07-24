@@ -1,3 +1,4 @@
+import { guestList, formatGuestList } from './shared.js';
 let currentGuest = null;
 
 window.addEventListener('DOMContentLoaded', () => {

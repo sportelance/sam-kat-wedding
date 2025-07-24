@@ -1,6 +1,6 @@
-let currentGuest = null;
-let emailCount = 0;
-let rsvpDropdownPopulated = false;
+import { EMAILJS_CONFIG, guestList, formatGuestList, getCurrentGuest } from './shared.js';
+let currentGuest = getCurrentGuest();
+let emailCount = Number(localStorage.getItem('emailCount') || 0);
 
 // RSVP dropdown options (excluding placeholder)
 const rsvpOptionTemplates = [
@@ -163,7 +163,7 @@ function submitRSVP() {
         submitButton.classList.remove('disabled');
         return;
     }
-    emailCount++;
+    incrementEmailCount();
     let subject;
     if (emailCount === 1) {
         subject = `RSVP from ${currentGuest.inputName}`;
@@ -171,7 +171,7 @@ function submitRSVP() {
         const ordinals = ['', 'second', 'third', 'fourth', 'fifth'];
         const ordinal = ordinals[emailCount] || `${emailCount}th`;
         subject = `${currentGuest.inputName} has sent a ${ordinal} RSVP email`;
-    }
+    }  
     const selectedGuests = getSelectedGuests();
     const emailData = {
         guest_name: currentGuest.inputName,
@@ -212,6 +212,11 @@ function submitRSVP() {
         submitButton.textContent = "You're cut off!";
         submitButton.classList.add('disabled');
     }
+}
+
+function incrementEmailCount() {
+    emailCount++;
+    localStorage.setItem('emailCount', emailCount);
 }
 
 function getSelectedGuests() {

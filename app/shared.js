@@ -1,5 +1,5 @@
 // Guest list with name variations
-const guestList = {
+export const guestList = {
     'joe': ['Joe', 'Patty', 'Grace'],
     'joey': ['Joe', 'Patty', 'Grace'],
     'joseph': ['Joe', 'Patty', 'Grace'],
@@ -45,20 +45,25 @@ const guestList = {
     'dick': ['Dick', 'Pam'],
     'pamela': ['Dick', 'Pam'],
     'pam': ['Dick', 'Pam'],
-    'sam': ['Sam', 'Kat'],
+    'samuel': ['Sam', 'Kat'],
     'kat': ['Sam', 'Kat']
 };
 
-const EMAILJS_CONFIG = {
+export const EMAILJS_CONFIG = {
     publicKey: 'CoQOIcjZNBGJm0B4e',
     serviceId: 'service_iqw111p',
     templateId: 'template_19ojfhn'
 };
 
-function formatGuestList(guests) {
+export function formatGuestList(guests) {
     if (!guests || guests.length === 0) return '';
     if (guests.length === 1) return guests[0];
     if (guests.length === 2) return `${guests[0]} and ${guests[1]}`;
     // Oxford comma for 3 or more
     return `${guests.slice(0, -1).join(', ')}, and ${guests[guests.length - 1]}`;
 } 
+
+export function getCurrentGuest() {
+    const savedGuest = localStorage.getItem('currentGuest');
+    return savedGuest ? JSON.parse(savedGuest) : null;
+}

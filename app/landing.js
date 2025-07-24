@@ -1,4 +1,4 @@
-let currentGuest = null;
+import { guestList, formatGuestList } from './shared.js';
 
 document.getElementById('nameInput').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
@@ -26,7 +26,7 @@ function checkGuest() {
     const name = nameInput.value.trim().toLowerCase();
     if (guestList[name]) {
         const formattedName = capitalizeFirst(name);
-        currentGuest = {
+        let currentGuest = {
             inputName: formattedName,
             party: guestList[name]
         };

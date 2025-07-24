@@ -1,6 +1,6 @@
 .main-page {
     position: relative;
-    height: 200vh;
+    min-height: 200vh;
 }
 
 .background-image {
@@ -34,7 +34,7 @@
 
 .main-header {
     font-size: 2.5rem;
-    margin: 140px 0 20px;
+    margin: 170px 0 20px;
 }
 
 .sub-header {
@@ -176,18 +176,10 @@
 
 @media (max-width: 700px) {
     .content-overlay {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        height: 100vh;
-        justify-content: flex-start;
+        /* Remove flex, min-height, height, and justify-content */
     }
     .main-scrollable {
-        flex: 1 1 auto;
-        overflow-y: auto;
-        padding-bottom: 80px;
-        min-height: 100vh;
-        max-height: calc(100vh - 80px);
+        /* Remove flex, overflow-y, padding-bottom, min-height, max-height */
     }
     .rsvp-bottom-bar {
         position: fixed;
@@ -199,6 +191,7 @@
         justify-content: center;
         align-items: center;
         padding: 16px 0 12px 0;
+        box-shadow: 0 -2px 12px rgba(147,112,219,0.08);
     }
     .rsvp-button {
         margin: 0;

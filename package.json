@@ -28,5 +28,8 @@
     "type": "git",
     "url": "https://github.com/sportelance/sam-kat-wedding.git"
   },
-  "homepage": "https://sportelance.github.io/sam-kat-wedding"
+  "homepage": "https://sportelance.github.io/sam-kat-wedding",
+  "dependencies": {
+    "emailjs": "^4.0.3"
+  }
 }

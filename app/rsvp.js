@@ -13,6 +13,11 @@ const rsvpOptionTemplates = [
     "Other"
 ];
 
+// Initialize EmailJS
+if (typeof emailjs !== 'undefined' && EMAILJS_CONFIG && EMAILJS_CONFIG.publicKey) {
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+}
+
 // Modal HTML for stay suggestion
 function createStayModal() {
     // Remove any existing modal
@@ -103,6 +108,43 @@ function showRsvpPage() {
     });
 }
 
+function showSuccessMessage(rsvpValue) {
+    // Remove any existing
+    let msg = document.getElementById('rsvpSuccessMsg');
+    if (msg) msg.remove();
+    msg = document.createElement('div');
+    msg.id = 'rsvpSuccessMsg';
+    let isSorry = false;
+    if (
+        rsvpValue === "We won't be able to make it" ||
+        rsvpValue === "I won't be able to make it"
+    ) {
+        msg.textContent = "I'm sorry you won't be able to join us. We're planning a bigger party in the spring and hope to see you then!";
+        msg.style.color = '#b8005c';
+        isSorry = true;
+    } else {
+        msg.textContent = 'thanks for your rsvp!';
+        msg.style.color = '#28a745';
+    }
+    msg.style.position = 'fixed';
+    msg.style.top = '32px';
+    msg.style.left = '50%';
+    msg.style.transform = 'translateX(-50%)';
+    msg.style.background = 'rgba(255,255,255,0.97)';
+    msg.style.fontWeight = 'bold';
+    msg.style.fontSize = '1.2rem';
+    msg.style.padding = '14px 32px';
+    msg.style.borderRadius = '10px';
+    msg.style.boxShadow = '0 2px 12px rgba(40,167,69,0.10)';
+    msg.style.zIndex = 9999;
+    msg.style.textAlign = 'center';
+    msg.style.cursor = 'pointer';
+    msg.title = 'Click to dismiss';
+    msg.onclick = () => msg.remove();
+    document.body.appendChild(msg);
+    setTimeout(() => { if (msg) msg.remove(); }, isSorry ? 9000 : 6000);
+}
+
 function submitRSVP() {
     const dropdown = document.getElementById('responseDropdown');
     const submitButton = document.getElementById('submitButton');
@@ -113,10 +155,12 @@ function submitRSVP() {
     }
     submitButton.disabled = true;
     submitButton.textContent = 'Sending...';
+    submitButton.classList.add('disabled');
     if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
         alert('EmailJS not configured yet. Please set up your EmailJS credentials.');
         submitButton.disabled = false;
         submitButton.textContent = 'let us know';
+        submitButton.classList.remove('disabled');
         return;
     }
     emailCount++;
@@ -128,27 +172,26 @@ function submitRSVP() {
         const ordinal = ordinals[emailCount] || `${emailCount}th`;
         subject = `${currentGuest.inputName} has sent a ${ordinal} RSVP email`;
     }
+    const selectedGuests = getSelectedGuests();
     const emailData = {
         guest_name: currentGuest.inputName,
-        party_members: currentGuest.party.join(', '),
+        party_members: selectedGuests.join(', '),
         rsvp_response: dropdown.value,
         to_email: 'portelanes25@gmail.com',
         subject
     };
-    // Uncomment to send email via EmailJS
-    // emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, emailData)
-    //     .then(function(response) {
-    //         alert('Your RSVP has been sent successfully!');
-    //     })
-    //     .catch(function(error) {
-    //         alert('Failed to send RSVP. Please try again or text Sam directly.');
-    //     })
-    //     .finally(function() {
-    //         submitButton.disabled = false;
-    //         submitButton.textContent = 'let us know';
-    //     });
-    submitButton.disabled = false;
-    submitButton.textContent = 'let us know';
+    emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, emailData)
+        .then(function(response) {
+            showSuccessMessage(dropdown.value);
+        })
+        .catch(function(error) {
+            alert('Failed to send RSVP. Please try again or text Sam directly.');
+        })
+        .finally(function() {
+            submitButton.disabled = false;
+            submitButton.textContent = 'let us know';
+            submitButton.classList.remove('disabled');
+        });
     if (emailCount === 2) {
         let warning = document.getElementById('emailWarning');
         if (!warning) {
@@ -167,6 +210,7 @@ function submitRSVP() {
         document.getElementById('stopMessage').classList.add('show');
         submitButton.disabled = true;
         submitButton.textContent = "You're cut off!";
+        submitButton.classList.add('disabled');
     }
 }
 

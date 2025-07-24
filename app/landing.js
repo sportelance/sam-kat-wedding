@@ -21,8 +21,9 @@ function checkGuest() {
     const nameInput = document.getElementById('nameInput');
     const name = nameInput.value.trim().toLowerCase();
     if (guestList[name]) {
+        const formattedName = capitalizeFirst(name);
         currentGuest = {
-            inputName: nameInput.value.trim(),
+            inputName: formattedName,
             party: guestList[name]
         };
         localStorage.setItem('currentGuest', JSON.stringify(currentGuest));
@@ -36,6 +37,10 @@ function checkGuest() {
         }, 500);
     }
 } 
+
+function capitalizeFirst(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 function goToMain() {
     window.location.href = 'app/main.html';

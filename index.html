@@ -17,7 +17,10 @@
         <div class="landing-container">
             <h1 class="landing-title">Who are you?</h1>
             <p class="landing-subtitle">(just your first name please)</p>
-            <input type="text" id="nameInput" class="name-input" placeholder="Enter your name...">
+            <div class="landing-input-row">
+                <input type="text" id="nameInput" class="name-input" placeholder="Enter your name...">
+                <button id="landingSubmit" class="landing-submit" type="button">&rarr;</button>
+            </div>
             <div id="errorMessage" class="error-message">
                 Either we don't have you on the list or Sam doesn't have your name spelled that way. If you suspect it's the latter, text him to let him know and/or try again with a different spelling.
             </div>

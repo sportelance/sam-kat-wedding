@@ -6,6 +6,10 @@ document.getElementById('nameInput').addEventListener('keypress', function(e) {
     }
 });
 
+document.getElementById('landingSubmit').addEventListener('click', function() {
+    checkGuest();
+});
+
 document.getElementById('nameInput').addEventListener('input', function() {
     document.getElementById('errorMessage').classList.remove('show');
 });

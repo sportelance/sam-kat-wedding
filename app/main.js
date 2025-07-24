@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function showMainPage() {
     const header = document.getElementById('mainHeader');
-    header.textContent = `Hello ${formatGuestList(currentGuest.party)}!`;
+    header.textContent = `Hey ${formatGuestList(currentGuest.party)}!`;
     setupScrollEffect();
 }
 

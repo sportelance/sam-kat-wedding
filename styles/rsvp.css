@@ -35,18 +35,32 @@
     margin: 0 auto;
     padding-top: 100px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
+    position: relative;
     min-height: calc(100vh - 100px);
 }
 
 .rsvp-form {
-    margin-top: auto;
-    margin-bottom: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.1vw;
+    margin-left: auto;
+    margin-right: auto;
     background: rgba(255,255,255,0.9);
     padding: 30px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .rsvp-form {
+    max-width: 98vw;
+    padding: 16px 0 16px 0;
+    border-radius: 12px;
+  }
 }
 
 .rsvp-header {
@@ -99,10 +113,11 @@
     margin-bottom: 15px;
     opacity: 0;
     transition: opacity 0.3s ease;
+    display: none;
 }
-
 .stop-message.show {
     opacity: 1;
+    display: block;
 }
 
 .guest-row {
@@ -110,7 +125,7 @@
     align-items: center;
     justify-content: center;
     gap: 18px;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
     width: 100%;
 }
 .guest-info {
@@ -124,6 +139,8 @@
     gap: 12px;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 .guest-pill {
     display: inline-flex;
@@ -222,4 +239,10 @@
     margin: 0 auto;
     display: block;
     box-sizing: border-box;
+}
+.rsvp-container > * {
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    max-width: 90%;
 } 

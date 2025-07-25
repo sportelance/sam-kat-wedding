@@ -148,7 +148,7 @@ function showSuccessMessage(rsvpValue) {
 function submitRSVP() {
     const dropdown = document.getElementById('responseDropdown');
     const submitButton = document.getElementById('submitButton');
-    const statusMessage = document.getElementById('statusMessage');
+    // const statusMessage = document.getElementById('statusMessage');
     if (!dropdown.value) {
         alert('Please select a response first!');
         return;
@@ -173,10 +173,12 @@ function submitRSVP() {
         subject = `${currentGuest.inputName} has sent a ${ordinal} RSVP email`;
     }  
     const selectedGuests = getSelectedGuests();
+    const otherText = document.getElementById('otherText');
+    const response = otherText.value ? dropdown.value + ': ' + otherText.value : dropdown.value;
     const emailData = {
         guest_name: currentGuest.inputName,
         party_members: selectedGuests.join(', '),
-        rsvp_response: dropdown.value,
+        rsvp_response: response,
         to_email: 'portelanes25@gmail.com',
         subject
     };

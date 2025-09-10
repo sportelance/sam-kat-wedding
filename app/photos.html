@@ -11,19 +11,27 @@
 <body>
     <button class="back-arrow" id="backArrow">&larr;</button>
     <div class="gallery-vertical">
-        <div class="gallery-bg" style="background-image:url('../images/photos1.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos2.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos3.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos4.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos5.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos6.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos7.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos8.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos9.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos10.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos11.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos12.jpg')"></div>
-        <div class="gallery-bg" style="background-image:url('../images/photos13.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos1.jpg" style="background-image:url('../images/photos1.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos2.jpg" style="background-image:url('../images/photos2.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos3.jpg" style="background-image:url('../images/photos3.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos4.jpg" style="background-image:url('../images/photos4.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos5.jpg" style="background-image:url('../images/photos5.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos6.jpg" style="background-image:url('../images/photos6.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos7.jpg" style="background-image:url('../images/photos7.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos8.jpg" style="background-image:url('../images/photos8.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos9.jpg" style="background-image:url('../images/photos9.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos10.jpg" style="background-image:url('../images/photos10.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos11.jpg" style="background-image:url('../images/photos11.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos12.jpg" style="background-image:url('../images/photos12.jpg')"></div>
+        <div class="gallery-bg" data-image="../images/photos13.jpg" style="background-image:url('../images/photos13.jpg')"></div>
+    </div>
+    
+    <!-- Photo Modal -->
+    <div id="photoModal" class="photo-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <img id="modalImage" class="modal-image" src="" alt="Gallery photo">
+        </div>
     </div>
     <script src="gallery.js"></script>
 </body>

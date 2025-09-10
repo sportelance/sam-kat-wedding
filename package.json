@@ -1,28 +1,31 @@
 {
-  "name": "wedding-rsvp-site",
+  "name": "wedding-site",
   "version": "1.0.0",
-  "description": "A beautiful wedding RSVP website with guest authentication and response tracking",
+  "description": "A beautiful wedding website with photo galleries and event information",
   "main": "index.html",
   "scripts": {
     "start": "npx live-server --port=3000 --open=/ --watch=.",
     "dev": "npx live-server --port=3000 --open=/ --watch=. --no-css-inject",
     "serve": "npx http-server . -p 3000 -o -c-1",
-    "build": "echo 'No build process needed for static site'",
+    "build": "tsc && echo 'TypeScript compiled successfully'",
+    "build:watch": "tsc --watch",
     "deploy": "echo 'Push to GitHub repository to deploy via GitHub Pages'"
   },
   "keywords": [
     "wedding",
-    "rsvp",
     "static-site",
-    "javascript",
+    "typescript",
     "html",
-    "css"
+    "css",
+    "photo-gallery"
   ],
   "author": "Sam Portelance",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^24.3.1",
     "http-server": "^14.1.1",
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "typescript": "^5.9.2"
   },
   "repository": {
     "type": "git",
